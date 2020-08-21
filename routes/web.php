@@ -38,6 +38,8 @@ Route::group(['middleware' => ['auth','Admin']] ,function(){
 });
 Route::group(['middleware' => ['auth','Patient']] ,function(){
 
+
+    Route::get('/Patient/doctorlist', 'Patient\PatientController@doctorlist')->name('doctorlist');
     Route::get('/Patient/index', 'Patient\PatientController@welcome');
 
 

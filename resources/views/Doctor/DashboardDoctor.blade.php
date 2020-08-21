@@ -264,6 +264,12 @@
                         <a href="#"><i class="fa fa-circle user-online"></i><span class="txtOnline">
                                 Online</span></a>
                     </div>
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
+                        <span class="txtOnline">Logout</span>
+                    </a>    
+                    <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
                 </div>
             </li>
             <li class="nav-item active open">

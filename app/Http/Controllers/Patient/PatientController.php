@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Patient;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
+use App\User;
+
 class PatientController extends Controller
 {
      
@@ -13,5 +15,11 @@ class PatientController extends Controller
       
        
         return view('Patient.DashboardPatient');
+    }
+    public function doctorlist()
+    {
+      
+        $users = User::all();
+        return view('Patient.Doctorlist',compact('users'));
     }
 }
