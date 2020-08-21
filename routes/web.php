@@ -31,8 +31,8 @@ Route::group(['middleware' => ['auth','Admin']] ,function(){
  Route::group(['middleware' => ['auth','Doctor']] ,function(){
 
 
-
-    Route::get('/doctor/index', 'Doctor\DashboardDoctorController@welcome');
+    Route::get('/Doctor/appointement', 'Doctor\DashboardDoctorController@appointement')->name('appointement');
+    Route::get('/Doctor/index', 'Doctor\DashboardDoctorController@welcome');
 
     
 });

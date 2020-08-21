@@ -1,7 +1,10 @@
     @extends('layouts/app')
    @section('content')
-       
-  
+   
+   
+
+
+   </div>
      <div class="limiter">
                 <div class="container-login100 page-background">
                     <div class="wrap-login100">
@@ -53,4 +56,4 @@
                     </div>
                 </div>
             </div>
-         @endsection
+            
