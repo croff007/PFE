@@ -22,4 +22,10 @@ class PatientController extends Controller
         $users = User::all();
         return view('Patient.Doctorlist',compact('users'));
     }
+    public function makeappointement()
+    {
+      
+        $users = User::all();
+        return view('Patient.makeappointement',compact('users'));
+    }
 }

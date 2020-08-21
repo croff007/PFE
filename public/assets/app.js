@@ -754,6 +754,9 @@ var App = function() {
 
 }();
 
+global.$ = global.jQuery = require('jquery');
+
+
 jQuery(document).ready(function() {
     App.init(); // init core componets
     $(".chat-sidebar-chat-user-messages").animate({

@@ -69,6 +69,7 @@
     
 
 	<!-- start js include path -->
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="{{asset('assets/bundles/jquery/jquery.min.js')}}"></script>
 	<script src="{{asset('assets/bundles/popper/popper.js')}}"></script>

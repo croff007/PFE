@@ -30,6 +30,7 @@ Route::group(['middleware' => ['auth','Admin']] ,function(){
  });
  Route::group(['middleware' => ['auth','Doctor']] ,function(){
 
+    Route::get('appointement', 'AppointementController@index');
 
     Route::get('/Doctor/appointement', 'Doctor\DashboardDoctorController@appointement')->name('appointement');
     Route::get('/Doctor/index', 'Doctor\DashboardDoctorController@welcome');
@@ -38,7 +39,7 @@ Route::group(['middleware' => ['auth','Admin']] ,function(){
 });
 Route::group(['middleware' => ['auth','Patient']] ,function(){
 
-
+    Route::get('/Patient/appointement', 'Patient\PatientController@makeappointement');
     Route::get('/Patient/doctorlist', 'Patient\PatientController@doctorlist')->name('doctorlist');
     Route::get('/Patient/index', 'Patient\PatientController@welcome');
 
