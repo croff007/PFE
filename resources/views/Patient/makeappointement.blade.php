@@ -19,7 +19,7 @@
                     <li class="mdl-menu__item"><i class="material-icons">favorite</i>Something else
                         here</li>
                 </ul>
-            </div>
+            </div> 
             <div class="card-body" id="bar-parent">
                 <form action="#" id="form_sample_1" class="form-horizontal">
                     <div class="form-body">

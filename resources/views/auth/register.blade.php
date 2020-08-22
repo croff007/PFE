@@ -20,6 +20,8 @@
                     Registration
                 </span>
                 <div class="row">
+
+
                     <div class="col-lg-6 p-t-20">
                         <div class="wrap-input100 validate-input" data-validate="Enter username">
                             <div class="bmd-form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
@@ -33,6 +35,87 @@
                             <span class="focus-input100" data-placeholder="&#xf207;"></span>
                         </div>
                     </div>
+
+                    <div class="col-lg-6 p-t-20">
+                        <div class="wrap-input100 validate-input" data-validate="Enter Last name">
+                            <div class="bmd-form-group{{ $errors->has('lastname') ? ' has-danger' : '' }}">
+                            <input class="input100" type="text" name="last name" placeholder="Last Name" id='lastname' value="{{ old('lastname') }}"required>
+                            @if ($errors->has('lastname'))
+                              <div id="name-error" class="error text-danger pl-3" for="name" style="display: block;">
+                                <strong>{{ $errors->first('lastname') }}</strong>
+                              </div>
+                            @endif
+                             </div>
+                            <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-6 p-t-20">
+                        <div class="wrap-input100 validate-input" data-validate="Enter Date of birth">
+                            <div class="bmd-form-group{{ $errors->has('dateofbirth') ? ' has-danger' : '' }}">
+                            <input class="input100" type="date" name="last name" placeholder="Date of birth" id='dateofbirth' value="{{ old('dateofbirth') }}"required>
+                            @if ($errors->has('dateofbirth'))
+                              <div id="name-error" class="error text-danger pl-3" for="name" style="display: block;">
+                                <strong>{{ $errors->first('dateofbirth') }}</strong>
+                              </div>
+                            @endif
+                             </div>
+                            <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                        </div>
+                    </div>
+
+                    
+
+                    <div class="col-lg-6 p-t-20">
+                        <div class="wrap-input100 validate-input" data-validate="Enter phone">
+                            <div class="bmd-form-group{{ $errors->has('phone') ? ' has-danger' : '' }}">
+                            <input class="input100" type="tel" name="last name" placeholder="Phone" id='phone' value="{{ old('phone') }}"required>
+                            @if ($errors->has('phone'))
+                              <div id="name-error" class="error text-danger pl-3" for="name" style="display: block;">
+                                <strong>{{ $errors->first('phone') }}</strong>
+                              </div>
+                            @endif
+                             </div>
+                            <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                        </div>
+                    </div>
+
+                    
+
+                    <div class="col-lg-6 p-t-20">
+                        <div class="wrap-input100 validate-input" data-validate="Enter Adress">
+                            <div class="bmd-form-group{{ $errors->has('adress') ? ' has-danger' : '' }}">
+                            <textarea class="input100" type="text" name="adress" placeholder="Adress" id='adress' value="{{ old('adress') }}"required></textarea>
+                            @if ($errors->has('adress'))
+                              <div id="name-error" class="error text-danger pl-3" for="name" style="display: block;">
+                                <strong>{{ $errors->first('adress') }}</strong>
+                              </div>
+                            @endif
+                             </div>
+                            <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                        </div>
+                    </div>
+
+
+
+                    
+                    <div class="col-lg-6 p-t-20">
+                        <div class="wrap-input100 validate-input" data-validate="Enter your photo">
+                           
+                            <div class="bmd-form-group{{ $errors->has('photo') ? ' has-danger' : '' }}">
+                                <label class="custom-file-label" for="validatedCustomFile">Choose Photo...</label>  
+                            <input class="custom-file-input" type="file" name="last name" placeholder="Last Name" id='photo' value="{{ old('photo') }}"required>
+                            @if ($errors->has('photo'))
+                              <div id="name-error" class="error text-danger pl-3" for="name" style="display: block;">
+                                <strong>{{ $errors->first('photo') }}</strong>
+                              </div>
+                            @endif
+                             </div>
+                            <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                        </div>
+                    </div>
+
                     <div class="col-lg-6 p-t-20">
                         <div class="wrap-input100 validate-input" data-validate="Enter email">
                             <div class="bmd-form-group{{ $errors->has('email') ? ' has-danger' : '' }} mt-3">

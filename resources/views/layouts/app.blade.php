@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+   
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -69,19 +69,21 @@
     
 
 	<!-- start js include path -->
+
+	
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="{{asset('assets/bundles/jquery/jquery.min.js')}}"></script>
 	<script src="{{asset('assets/bundles/popper/popper.js')}}"></script>
 	<script src="{{asset('assets/bundles/jquery-blockUI/jquery.blockui.min.js')}}"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-slimScroll/1.3.8/jquery.slimscroll.min.js" integrity="sha512-cJMgI2OtiquRH4L9u+WQW+mz828vmdp9ljOcm/vKTQ7+ydQUktrPVewlykMgozPP+NUBbHdeifE6iJ6UVjNw5Q==" crossorigin="anonymous"></script>	<!-- bootstrap -->
 	<script src="{{asset('assets/bundles/bootstrap/js/bootstrap.min.js')}}"></script>
+	<script src="{{asset('assets\bundles\jquery.slimscroll\jquery.slimscroll.js')}}"></script>
 	<script src="{{asset('assets/bundles/bootstrap-switch/js/bootstrap-switch.min.js')}}"></script>
 	<!-- counterup -->
 	<script src="{{asset('assets/bundles/counterup/jquery.waypoints.min.js')}}"></script>
 	<script src="{{asset('assets/bundles/counterup/jquery.counterup.min.js')}}"></script>
 	<!-- Common js-->
-	<script src="{{asset('assets/app.js')}}"></script>
+	
 	<script src="{{asset('assets/layout.js')}}"></script>
 	<script src="{{asset('assets/theme-color.js')}}"></script>
 	<!-- material -->
@@ -93,11 +95,11 @@
 	<script src="{{asset('assets/bundles/sparkline/jquery.sparkline.js')}}"></script>
 	<script src="{{asset('assets/data/sparkline-data.js')}}"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="https://raw.github.com/rochal/jQuery-slimScroll/master/jquery.slimscroll.min.js"></script>
+
 <script>
-    jQuery(document).ready(function($) {
-        $("#boxsrchome").slimScroll();
-    });
+    (function($) {
+    $("#boxsrchome").slimScroll();
+})(jQuery);
 </script>
 	<!-- end js include path -->
 </body>

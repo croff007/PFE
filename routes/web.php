@@ -17,8 +17,33 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', function () {
     return view('welcome');
 });
-
 Auth::routes();
+
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('login', 'Auth\LoginController@login');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+
+// Registration Routes...
+Route::get('/register/Patient', 'Auth\RegisterController@showPatientForm')->name('registerpatient');
+Route::get('/register/Doctor', 'Auth\RegisterController@showDoctorForm')->name('registerdoctor');
+
+
+// Password Reset Routes...
+Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
+
+// Confirm Password (added in v6.2)
+Route::get('password/confirm', 'Auth\ConfirmPasswordController@showConfirmForm')->name('password.confirm');
+Route::post('password/confirm', 'Auth\ConfirmPasswordController@confirm');
+
+// Email Verification Routes...
+Route::get('email/verify', 'Auth\VerificationController@show')->name('verification.notice');
+Route::get('email/verify/{id}/{hash}', 'Auth\VerificationController@verify')->name('verification.verify'); // v6.x
+
+Route::get('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => ['auth','Admin']] ,function(){
@@ -32,18 +57,20 @@ Route::group(['middleware' => ['auth','Admin']] ,function(){
 
     Route::get('appointement', 'AppointementController@index');
 
-    Route::get('/Doctor/appointement', 'Doctor\DashboardDoctorController@appointement')->name('appointement');
+   
     Route::get('/Doctor/index', 'Doctor\DashboardDoctorController@welcome');
 
     
 });
 Route::group(['middleware' => ['auth','Patient']] ,function(){
 
-    Route::get('/Patient/appointement', 'Patient\PatientController@makeappointement');
-    Route::get('/Patient/doctorlist', 'Patient\PatientController@doctorlist')->name('doctorlist');
+    
     Route::get('/Patient/index', 'Patient\PatientController@welcome');
+    
+    Route::get('/Patient/doctorlist', 'Patient\PatientController@doctorlist')->name('doctorlist');
 
 
 
     
 });
+

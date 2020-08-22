@@ -1,38 +1,88 @@
-<?php 
+<?php
+
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Calendar;
 use App\Appointement;
+use Illuminate\Http\Request;
 
 class AppointementController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        $appointements = [];
-        $data = Appointement::all();
-        if($data->count()) {
-            foreach ($data as $key => $value) {
-                $appointement[] = Calendar::event(
-                    $value->title,
-                    true,
-                    new \DateTime($value->start_date),
-                    new \DateTime($value->end_date.' +1 day'),
-                    null,
-                    // Add color and link on event
-	                [
-	                    'color' => '#f05050',
-	                    'url' => 'pass here url and any route',
-	                ]
-                );
-            }
-        }
-        $calendar = Calendar::addEvents($appointements);
-        return view('fullcalender', compact('calendar'));
+        
+        $appointements=Appointement::latest()->pagination(5);
+        return view('Doctor.appointement',compact('appointements'))->with('i',(request()->input('page',1)-1)*5);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        
+        return view('Patient.makeappointement');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Appointement  $appointement
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Appointement $appointement)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Appointement  $appointement
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Appointement $appointement)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Appointement  $appointement
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Appointement $appointement)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Appointement  $appointement
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Appointement $appointement)
+    {
+        //
     }
 }
-
-
-
-
-

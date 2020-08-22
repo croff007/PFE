@@ -59,15 +59,15 @@
 														</label>
 													</th>
 													<th>Patient Name</th>
-													<th>Assigned Doctor</th>
+													<th>Birth date</th>
 													<th>Date</th>
 													<th>Time</th>
 													<th>Actions </th>
 												</tr>
 											</thead>
 											<tbody>
-                                                @foreach ($users as $patient)
- 													   @if ($patient->role == 'Patient')
+                                                @foreach ($appointements as $appointement)
+ 													   
 												<tr class="odd gradeX">
 													<td>
 														<label class="rt-chkbox rt-chkbox-single rt-chkbox-outline">
@@ -75,12 +75,12 @@
 															<span></span>
 														</label>
 													</td>
-													<td> {{$patient->name}} </td>
+													<td> {{$appointement->patientname}} </td>
 													<td>
-														<a href="mailto:shuxer@gmail.com"> Dr.Rajesh </a>
+														<td class="center"> {{$appointement->dateofbirth}} </td>
 													</td>
-													<td class="center"> 12/05/2016 </td>
-													<td class="center"> 10:45 </td>
+													<td class="center"> {{$appointement->adress}} </td>
+													<td class="center"> {{$appointement->date}} </td>
 													<td class="center">
 														<div class="btn-group">
 															<button
@@ -111,7 +111,7 @@
 														</div>
 													</td>
                                                 </tr>
-                                                @endif
+                                                
                                                 @endforeach
 											</tbody>
 										</table>

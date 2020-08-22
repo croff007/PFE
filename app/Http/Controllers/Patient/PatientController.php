@@ -28,4 +28,6 @@ class PatientController extends Controller
         $users = User::all();
         return view('Patient.makeappointement',compact('users'));
     }
+
+    
 }

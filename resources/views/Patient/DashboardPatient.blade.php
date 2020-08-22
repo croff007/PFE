@@ -280,7 +280,12 @@
                     <span class="title">Doctor List</span>
                     <span class="selected"></span>
                 </a>
-               
+                <a href="{{ route('appointement') }}" class="nav-link ">
+                    <i class="material-icons">assignment</i>
+                    
+                    <span class="title">Make appointement</span>
+                    <span class="selected"></span>
+                </a>
             </li>
         
         </ul>
