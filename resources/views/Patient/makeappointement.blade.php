@@ -24,6 +24,7 @@
                 <form class="form-horizontal" method="POST" action="{{ route('appointement.store') }}">
                     @csrf
                     <div class="form-body">
+                        <input type="hidden" id="doctorid" name="doctorid" value="{{$id}}">
                         <input type="hidden" id="name" name="patientname" value="{{Auth::user()->name}}">
                         <input type="hidden" id="patientlastname" name="patientlastname" value="{{Auth::user()->lastname}}">
                         <input type="hidden" id="adress" name="adress" value="{{Auth::user()->adress}}">
@@ -41,6 +42,17 @@
                             <div class="input-append date" id="dp1">
                                 <input id="date" name="date"class="formDatePicker" placeholder="Date Of Appointment"
                                     size="44" type="datetime-local" >
+                                
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="control-label col-md-3">Description
+                                <span class="required"> * </span>
+                            </label>
+                            <div class="input-append date" id="dp1">
+                                <textarea id="desc" name="desc"class="formDatePicker" placeholder="Description"
+                                    size="44" type="datetime-local" ></textarea>
                                 
                             </div>
                         </div>

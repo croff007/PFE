@@ -60,8 +60,8 @@ Route::group(['middleware' => ['auth','Admin']] ,function(){
 
     Route::get('appointement', 'AppointementController@index')->name('appointement');
 
-   
-    Route::get('/doctor/index', 'Doctor\DashboardDoctorController@welcome');
+    Route::resource('/Doctor/appointement','AppointementController');
+    Route::get('/Doctor/index', 'Doctor\DashboardDoctorController@welcome');
 
     
 });
@@ -69,8 +69,8 @@ Route::group(['middleware' => ['auth','Patient']] ,function(){
 
     
     Route::get('/Patient/index', 'Patient\PatientController@welcome');
-    Route::resource('appointement','AppointementController');
-    Route::get('/Patient/appontement', 'Patient\PatientController@makeappointement')->name('makeappointement');
+    
+    Route::get('/Patient/appontement/{id}', 'AppointementController@makeappointement')->name('makeappointement');
     Route::get('/Patient/doctorlist', 'Patient\PatientController@doctorlist')->name('doctorlist');
 
 

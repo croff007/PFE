@@ -27,8 +27,9 @@
                             <p><i class="fa fa-phone"></i><a
                                     href="tel:{{$doctor->name}}"> {{$doctor->phone}}</a></p>
                         </div>
+
                         <div class="profile-userbuttons">
-                            <a href="doctor_profile.html"
+                            <a href="{{ URL('/Patient/appontement/'.$doctor->id )}}"
                                 class="btn btn-circle deepPink-bgcolor btn-sm">Make appointement</a>
                         </div>
                     </div>

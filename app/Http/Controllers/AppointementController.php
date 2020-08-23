@@ -14,8 +14,8 @@ class AppointementController extends Controller
      */
     public function index()
     {
-        
-        $appointements=Appointement::latest()->pagination(5);
+         
+        $appointements=Appointement::orderby('date','ASC')->paginate(5);
         return view('Doctor.appointement',compact('appointements'))->with('i',(request()->input('page',1)-1)*5);
     }
 
@@ -27,7 +27,13 @@ class AppointementController extends Controller
     public function create()
     {
         
-        return view('Patient.makeappointement');
+        return view('Patient.makeappointement',compact('appointement'));
+    }
+
+    public function makeappointement($id)
+    {
+        $id=$id;
+        return view('Patient.makeappointement',compact('id'));
     }
 
     /**
@@ -46,7 +52,7 @@ class AppointementController extends Controller
         Appointement::create($request->all());
    
         return redirect()->route('doctorlist')
-                        ->with('success','Blog created successfully.');
+                        ->with('success','Appointement created successfully.');
     }
 
     /**
@@ -80,7 +86,12 @@ class AppointementController extends Controller
      */
     public function update(Request $request, Appointement $appointement)
     {
-        //
+        
+        
+        $appointement->update($request->all());
+  
+        return redirect()->route('appointement')
+                        ->with('success','Appointement updated successfully');
     }
 
     /**
@@ -91,6 +102,9 @@ class AppointementController extends Controller
      */
     public function destroy(Appointement $appointement)
     {
-        //
+        $appointement->delete();
+  
+        return redirect()->route('appointement')
+                        ->with('success','Appointement deleted successfully');
     }
 }

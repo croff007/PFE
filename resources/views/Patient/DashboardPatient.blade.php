@@ -64,17 +64,17 @@
                     </a>    
                     <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
                         {{ csrf_field() }}
-                    </form>
+                    </form> 
                 </div>
             </li>
             <li class="nav-item active open">
-                <a href="{{ route('appointement.create') }}" class="nav-link ">
+                <a href="{{ route('doctorlist') }}" class="nav-link ">
                     <i class="material-icons">assignment</i>
                     
                     <span class="title">Doctor List</span>
                     <span class="selected"></span>
                 </a>
-                <a href="{{ route('makeappointement') }}" class="nav-link ">
+                <a href="" class="nav-link ">
                     <i class="material-icons">assignment</i>
                     
                     <span class="title">Make appointement</span>

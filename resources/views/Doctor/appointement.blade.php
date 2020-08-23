@@ -51,58 +51,48 @@
 											id="example4">
 											<thead>
 												<tr>
-													<th>
-														<label class="rt-chkbox rt-chkbox-single rt-chkbox-outline">
-															<input type="checkbox" class="group-checkable"
-																data-set="#sample_1 .checkboxes" />
-															<span></span>
-														</label>
-													</th>
+													
 													<th>Patient Name</th>
 													<th>Birth date</th>
-													<th>Date</th>
+													<th>Adress</th>
 													<th>Time</th>
+													<th>Description</th>
 													<th>Actions </th>
 												</tr>
 											</thead>
 											<tbody>
                                                 @foreach ($appointements as $appointement)
- 													   
+ 												@if($appointement->state=='confirmed')
 												<tr class="odd gradeX">
-													<td>
-														<label class="rt-chkbox rt-chkbox-single rt-chkbox-outline">
-															<input type="checkbox" class="checkboxes" value="1" />
-															<span></span>
-														</label>
-													</td>
+													
 													<td> {{$appointement->patientname}} </td>
-													<td>
-														<td class="center"> {{$appointement->dateofbirth}} </td>
-													</td>
+													
+													<td class="center"> {{$appointement->dateofbirth}} </td>
+													
 													<td class="center"> {{$appointement->adress}} </td>
 													<td class="center"> {{$appointement->date}} </td>
+													<td class="center"> {{$appointement->desc}} </td>
 													<td class="center">
 														<div class="btn-group">
+															<form action="{{ route('appointement.update',$appointement->id) }}" method="POST">
+																@csrf
+																@method('PUT')
+																<input type="hidden" name='state' id='state'value="confirmed">
 															<button
 																class="btn btn-xs btn-warning dropdown-toggle center no-margin"
-																type="button" data-toggle="dropdown"
-																aria-expanded="false"> Actions
-																<i class="fa fa-angle-down"></i>
+																type="submit" > Confirm
+															
 															</button>
-															<ul class="dropdown-menu pull-left" role="menu">
-																<li>
-																	<a href="javascript:;"><i class="fa fa-trash-o"></i>
-																		Delete </a>
-																</li>
-																<li>
-																	<a href="javascript:;"><i class="fa fa-ban"></i>
-																		Cancel </a>
-																</li>
-																<li>
-																	<a href="javascript:;"><i class="fa fa-clock-o"></i>
-																		Postpone </a>
-																</li>
-															</ul>
+															</form>
+															<form action="{{ route('appointement.destroy',$appointement->id) }}" method="POST">
+																@csrf
+																@method('DELETE')
+																<button
+																class="btn deepPink-bgcolor  center no-margin"
+																type="submit" > Delete
+															
+															</button>
+															
 														</div>
 													</td>
                                                 </tr>
@@ -111,7 +101,7 @@
 														</div>
 													</td>
                                                 </tr>
-                                                
+                                                @endif
                                                 @endforeach
 											</tbody>
 										</table>

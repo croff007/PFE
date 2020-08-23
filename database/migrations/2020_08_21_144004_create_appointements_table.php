@@ -20,6 +20,8 @@ class CreateAppointementsTable extends Migration
             $table->string('adress');
             $table->string('dateofbirth');
             $table->date('date');
+            $table->integer('doctorid');
+            $table->text('desc');
             
             $table->string('state')->nullable();
             $table->timestamps();
