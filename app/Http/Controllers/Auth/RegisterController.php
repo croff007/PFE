@@ -66,23 +66,44 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        if($data['role']=='Doctor'){
         return User::create([
             'name' => $data['name'],
+            'lastname' => $data['lastname'],
+            'adress' => $data['adress'],
+            'phone' => $data['phone'],
+            'dateofbirth' => $data['dateofbirth'],
+            'photo' => $data['photo'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'role' => $data['role'],
+            'desc' => $data['desc'],
+            'departement' => $data['departement'],
+       
         ]);
+        }else
+        return User::create([
+            'name' => $data['name'],
+            'lastname' => $data['lastname'],
+            'adress' => $data['adress'],
+            'phone' => $data['phone'],
+            'dateofbirth' => $data['dateofbirth'],
+            'photo' => $data['photo'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+            'role' => $data['role'],
+            ]);
     }
 
     public function showPatientForm()
 {
-    
-    return view('auth/register');
+    $r='Patient';
+    return view('auth/register',compact('r'));
 }
 public function showDoctorForm()
 {
-    
-    return view('auth/register');
+    $r='Doctor';
+    return view('auth/register',compact('r'));
 }
 
 }

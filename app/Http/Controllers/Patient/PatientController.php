@@ -17,7 +17,7 @@ class PatientController extends Controller
         return view('Patient.DashboardPatient');
     }
     public function doctorlist()
-    {
+    { 
       
         $users = User::all();
         return view('Patient.Doctorlist',compact('users'));

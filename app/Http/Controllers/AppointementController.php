@@ -38,7 +38,15 @@ class AppointementController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $request->validate([
+            'date' => 'required',
+            
+        ]);
+
+        Appointement::create($request->all());
+   
+        return redirect()->route('doctorlist')
+                        ->with('success','Blog created successfully.');
     }
 
     /**
@@ -60,7 +68,7 @@ class AppointementController extends Controller
      */
     public function edit(Appointement $appointement)
     {
-        //
+        return view('Doctor.editappointement',compact('appointement'));
     }
 
     /**

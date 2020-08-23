@@ -273,7 +273,7 @@
                 </div>
             </li>
             <li class="nav-item active open">
-                <a href="{{route('appointement')}}" class="nav-link ">
+                <a href="" class="nav-link ">
                     <i class="material-icons">assignment</i>
                     
                     <span class="title">Appointments</span>

@@ -19,6 +19,8 @@ Route::get('/', function () {
 });
 Auth::routes();
 
+
+
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
@@ -53,12 +55,13 @@ Route::group(['middleware' => ['auth','Admin']] ,function(){
 
 
  });
+ 
  Route::group(['middleware' => ['auth','Doctor']] ,function(){
 
-    Route::get('appointement', 'AppointementController@index');
+    Route::get('appointement', 'AppointementController@index')->name('appointement');
 
    
-    Route::get('/Doctor/index', 'Doctor\DashboardDoctorController@welcome');
+    Route::get('/doctor/index', 'Doctor\DashboardDoctorController@welcome');
 
     
 });
@@ -66,7 +69,8 @@ Route::group(['middleware' => ['auth','Patient']] ,function(){
 
     
     Route::get('/Patient/index', 'Patient\PatientController@welcome');
-    
+    Route::resource('appointement','AppointementController');
+    Route::get('/Patient/appontement', 'Patient\PatientController@makeappointement')->name('makeappointement');
     Route::get('/Patient/doctorlist', 'Patient\PatientController@doctorlist')->name('doctorlist');
 
 

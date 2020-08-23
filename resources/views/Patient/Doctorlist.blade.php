@@ -10,26 +10,26 @@
     <div class="card card-box" style="margin-top: 50px">
 <div class="tab-pane" id="tab2">
     <div class="row">
-        @foreach ($users as $patient)
- 		 @if ($patient->role == 'Doctor')
+        @foreach ($users as $doctor)
+ 		 @if ($doctor->role == 'Doctor')
         <div class="col-md-4">
             <div class="card card-topline-aqua">
                 <div class="card-body no-padding ">
                     <div class="doctor-profile">
-                        <img src="img/doc/doc10.jpg" class="doctor-pic" alt="">
+                        
+                        <img src="{{asset('img/'.$doctor->photo)}}" class="doctor-pic" alt="">
                         <div class="profile-usertitle">
-                            <div class="doctor-name">Dr.Pooja Patel </div>
-                            <div class="name-center"> Cardiology </div>
+                            <div class="doctor-name">Dr.{{$doctor->name}} {{$doctor->lastname}} </div>
+                            <div class="name-center"> {{$doctor->departement}} </div>
                         </div>
-                        <p>A-103, shyam gokul flats, Mahatma Road <br />Mumbai</p>
+                        <p>{{$doctor->adress}} </p>
                         <div>
                             <p><i class="fa fa-phone"></i><a
-                                    href="tel:(123)456-7890"> (123)456-7890</a></p>
+                                    href="tel:{{$doctor->name}}"> {{$doctor->phone}}</a></p>
                         </div>
                         <div class="profile-userbuttons">
                             <a href="doctor_profile.html"
-                                class="btn btn-circle deepPink-bgcolor btn-sm">Read
-                                More</a>
+                                class="btn btn-circle deepPink-bgcolor btn-sm">Make appointement</a>
                         </div>
                     </div>
                 </div>

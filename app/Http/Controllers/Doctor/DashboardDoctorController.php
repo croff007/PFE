@@ -18,7 +18,7 @@ class DashboardDoctorController extends Controller
     public function appointement()
     { $users = User::all();
       return view('Doctor.appointement', compact('users'));
-    }
+    } 
 
     
 }
