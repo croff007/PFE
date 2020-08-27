@@ -22,7 +22,7 @@
                             <div class="doctor-name">Dr.{{$doctor->name}} {{$doctor->lastname}} </div>
                             <div class="name-center"> {{$doctor->departement}} </div>
                         </div>
-                        <p>{{$doctor->adress}} </p>
+                        <p>{{$doctor->adress}} </p> 
                         <div>
                             <p><i class="fa fa-phone"></i><a
                                     href="tel:{{$doctor->name}}"> {{$doctor->phone}}</a></p>

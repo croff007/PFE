@@ -62,7 +62,7 @@
 											</thead>
 											<tbody>
                                                 @foreach ($appointements as $appointement)
- 												@if($appointement->state=='notconfirmed' && $appointement->doctorid==Auth::user()->id )
+ 												@if($appointement->state=='confirmed' && $appointement->doctorid==Auth::user()->id )
 												<tr class="odd gradeX">
 													
 													<td> {{$appointement->patientname}} </td>
@@ -74,25 +74,24 @@
 													<td class="center"> {{$appointement->desc}} </td>
 													<td class="center">
 														<div class="btn-group">
-															<form action="{{ route('appointement.update',$appointement->id) }}" method="POST">
-																@csrf
-																@method('PUT')
-																<input type="hidden" name='state' id='state'value="confirmed">
+															<a href="{{ URL('/Doctor/makenote/'.$appointement->patientid )}}" >
+																
 															<button
 																class="btn btn-xs btn-warning dropdown-toggle center no-margin"
-																type="submit" > Confirm
+																 > Add note
 															
 															</button>
-															</form>
-															<form action="{{ route('appointement.destroy',$appointement->id) }}" method="POST">
-																@csrf
-																@method('DELETE')
-																<button
-																class="btn deepPink-bgcolor  center no-margin"
-																type="submit" > Delete
+														</a>
+														
+														<a href="{{ URL('/Doctor/showpatient',$appointement->patientid )}}" >
+																
+															<button
+																class="btn btn-xs btn-warning dropdown-toggle center no-margin"
+																 > Show profile
 															
 															</button>
-															</form>
+                                                        </a>
+															
 															
 														</div>
 													</td>

@@ -42,7 +42,7 @@ class LoginController extends Controller
         }
         elseif (Auth::user()->role =='Doctor')
         {
-            return '/doctor/index' ;
+            return '/Doctor/index' ;
         }
         
          

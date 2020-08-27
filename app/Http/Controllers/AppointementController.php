@@ -19,6 +19,15 @@ class AppointementController extends Controller
         return view('Doctor.appointement',compact('appointements'))->with('i',(request()->input('page',1)-1)*5);
     }
 
+
+
+    public function mypatients()
+    {
+         
+        $appointements=Appointement::orderby('date','ASC')->paginate(5);
+        return view('Doctor.mypatients',compact('appointements'))->with('i',(request()->input('page',1)-1)*5);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -50,7 +59,7 @@ class AppointementController extends Controller
         ]);
 
         Appointement::create($request->all());
-   
+            
         return redirect()->route('doctorlist')
                         ->with('success','Appointement created successfully.');
     }

@@ -5,6 +5,10 @@
 @foreach ($errors->all() as $error)
 {{ $error }}
 @endforeach
+@if (Auth::check()){
+  {{redirect()->route(Auth::user()->type.'/index')}}
+ }
+ @endif
 
 <div class="limiter">
     <div class="container-login100 page-background">

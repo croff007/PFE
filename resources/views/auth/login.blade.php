@@ -1,8 +1,10 @@
     @extends('layouts/app')
    @section('content')
    
-   
-
+   @if (Auth::check()){
+    {{redirect()->route(Auth::user()->type.'/index')}}
+   }
+   @endif
 
    </div>
      <div class="limiter">

@@ -21,6 +21,7 @@ class CreateAppointementsTable extends Migration
             $table->string('dateofbirth');
             $table->date('date');
             $table->integer('doctorid');
+            $table->integer('patientid');
             $table->text('desc');
             
             $table->string('state')->nullable();
