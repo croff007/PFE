@@ -168,11 +168,14 @@
                         </div>
                         </div>
                     </div>
+                    <input type="hidden" id="blocked" name="blocked" value="0">
                     
                     @if($r=='Patient')
+                    <input type="hidden" id="state" name="state" value="confirmed">
                     <input type="hidden" id="role" name="role" value="Patient">    
                     @endif     
                 @if ($r=='Doctor')
+                <input type="hidden" id="state" name="state" value="notconfirmed">
                 <input type="hidden" id="role" name="role"value="Doctor">
 
                 <div class="col-lg-6 p-t-20">

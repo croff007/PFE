@@ -47,7 +47,7 @@
                     <div class="row text-center m-t-10">
                         <div class="col-lg-6 col-md-12 col-sm-6 col-xs-12 b-r">
                             <strong>Name</strong>
-                            <p>{{$patient->name}}</p>
+                            <p>{{$patient->name}} {{$patient->lastname}}</p>
                         </div>
                         <div class="col-lg-6 col-md-12 col-sm-6 col-xs-12">
                             <strong>Date of birth</strong>
@@ -91,31 +91,37 @@
                                 <tr>
                                     <th>Date</th>
                                     <th>Doctor</th>
-                                    <th>Treatment</th>
-                                    <th>Chart</th>
-                                    <th>Charges($)</th>
+                                    <th>Note</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>11/05/2017</td>
-                                    <td>Dr.Rajesh</td>
-                                    <td>Check up</td>
-                                    <td>
-                                        <div id="sparkline"></div>
-                                    </td>
-                                    <td>14$</td>
-                                    <td><a href="javascript:void(0)" class=""
-                                            data-toggle="tooltip" title="Edit">
-                                            <i class="fa fa-check"></i></a>
-                                        <a href="javascript:void(0)"
-                                            class="text-inverse" title="Delete"
-                                            data-toggle="tooltip">
-                                            <i class="fa fa-trash"></i></a>
-                                    </td>
-                                </tr>
+                                @foreach ($Notes as $note)
+                                    @foreach ($User as $doctors)
+                                    @if($doctors->id ==$note->doctorid)
+                                        {{!$doctor=$doctors}}
+                                    @endif
+                                    @endforeach
+
                                 
+                                <tr>
+                                    <td>{{$note->created_at}}</td>
+                                    <td>{{$doctor->name}} {{$doctor->lastname}}</td>
+                                    <td>{{$note->desc}}</td>
+                                    @if(Auth::user()->id==$note->doctorid)
+                                <td><a href="{{route('Note.edit', $note->id)}}" class=""
+                                            data-toggle="tooltip" title="Edit">
+                                            <i class="fa fa-edit"></i></a>
+                                 <form action="{{ route('Note.destroy',$note) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                   
+                                        <button type="submit">    <i class="fa fa-trash"></i></button>
+                                 </form>
+                                    </td>
+                                    @endif
+                                </tr>
+                               @endforeach 
                             </tbody>
                         </table>
                     </div>

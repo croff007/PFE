@@ -12,27 +12,11 @@
         </div>
         <!-- logo end -->
         
-        <!-- start mobile menu -->
-        <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse"
-            data-target=".navbar-collapse">
-            <span></span>
-        </a>
-        <!-- end mobile menu -->
+        
         <!-- start header menu -->
 <div class="top-menu">
     <ul class="nav navbar-nav pull-right">
-        <!-- start language menu -->
        
-        <!-- end language menu -->
-        <!-- start notification dropdown -->
-        
-        <!-- end notification dropdown -->
-        <!-- start message dropdown -->
-        
-        <!-- end message dropdown -->
-        <!-- start manage user dropdown -->
-       
-        <!-- end manage user dropdown -->
         
     </ul>
 </div>

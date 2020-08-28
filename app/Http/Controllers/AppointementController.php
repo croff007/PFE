@@ -99,7 +99,7 @@ class AppointementController extends Controller
         
         $appointement->update($request->all());
   
-        return redirect()->route('appointement')
+        return redirect()->route('appointement.index')
                         ->with('success','Appointement updated successfully');
     }
 

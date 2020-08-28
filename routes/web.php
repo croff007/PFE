@@ -48,11 +48,21 @@ Route::get('email/resend', 'Auth\VerificationController@resend')->name('verifica
 
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+
+
 Route::group(['middleware' => ['auth','Admin']] ,function(){
-
+    
     Route::get('/Admin/index', 'Admin\DashboardAdminController@welcome');
+    Route::get('/Admin/Doctorslist', 'Admin\DashboardAdminController@doctorslist')->name('doctorslist');
+    Route::get('/Admin/allDoctorslist', 'Admin\DashboardAdminController@alldoctorslist')->name('alldoctorslist');
+    Route::get('/Admin/blockedDoctorslist', 'Admin\DashboardAdminController@blockeddoctorslist')->name('blockeddoctorslist');
 
-
+    Route::get('/Admin/allPatientslist', 'Admin\DashboardAdminController@allpatientslist')->name('allpatientslist');
+    Route::get('/Admin/blockedPatientslist', 'Admin\DashboardAdminController@blockedpatientslist')->name('blockedpatientslist');
+    Route::PUT('/Admin/update/{doctor}', 'Admin\DashboardAdminController@confirm')->name('confirm');
 
  });
  
@@ -63,6 +73,7 @@ Route::group(['middleware' => ['auth','Admin']] ,function(){
     Route::get('appointementd', 'AppointementController@index')->name('appointementd');
     Route::get('/Doctor/mypatients','AppointementController@mypatients')->name('mypatients');
     Route::resource('/Doctor/appointement','AppointementController');
+    Route::resource('/Doctor/Note','NoteController');
     Route::get('/Doctor/index', 'Doctor\DashboardDoctorController@welcome');
     Route::get('/Doctor/makenote/{id}', 'NoteController@makenote')->name('makenote');
     
@@ -71,7 +82,7 @@ Route::group(['middleware' => ['auth','Patient']] ,function(){
 
     
     Route::get('/Patient/index', 'Patient\PatientController@welcome');
-    Route::resource('/Patient/appointement','AppointementController');
+    
     Route::get('/Patient/appontement/{id}', 'AppointementController@makeappointement')->name('makeappointement');
     Route::get('/Patient/doctorlist', 'Patient\PatientController@doctorlist')->name('doctorlist');
 

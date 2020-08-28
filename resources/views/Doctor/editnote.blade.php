@@ -11,10 +11,13 @@
                 
             </div> 
             <div class="card-body" id="bar-parent">
-                <form class="form-horizontal" method="POST" action="{{ route('Note.store') }}">
+                <form class="form-horizontal" action="{{ route('Note.update',$note)}}" method="POST">
                     @csrf
+                    @method('PUT')
                     <div class="form-body">
-                        <input type="hidden" id="patientid" name="patientid" value="{{$id}}">
+                        
+                        <input type="hidden" id="id" name="id" value="{{$note->id}}">
+                        <input type="hidden" id="patientid" name="patientid" value="{{$note->patientid}}">
                         <input type="hidden" id="doctorid" name="doctorid" value="{{Auth::user()->id}}">
          
                         <div class="form-group row">
@@ -23,7 +26,7 @@
                             </label>
                             <div class="input-append date" id="dp1">
                                 <textarea id="desc" name="desc"class="formDatePicker" placeholder="Write your notes here.."
-                                    size="44" type="datetime-local" ></textarea>
+                            size="44" type="datetime-local" >{{$note->desc}}</textarea>
                                 
                             </div>
                         </div>

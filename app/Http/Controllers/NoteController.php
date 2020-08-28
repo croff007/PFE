@@ -74,9 +74,10 @@ class NoteController extends Controller
      * @param  \App\Note  $note
      * @return \Illuminate\Http\Response
      */
-    public function edit(Note $note)
+    public function edit($id)
     {
-        //
+        $note = Note::find($id);
+        return view('Doctor.editnote',compact('note'));
     }
 
     /**
@@ -88,7 +89,13 @@ class NoteController extends Controller
      */
     public function update(Request $request, Note $note)
     {
-        //
+        $data = request()->except(['_token','_method']);
+        Note::where('id', $request->id)->update($data);
+        
+      
+  
+        return redirect()->route('Note.show',$request->id)
+                        ->with('success','Product updated successfully');
     }
 
     /**
@@ -99,7 +106,7 @@ class NoteController extends Controller
      */
     public function destroy(Note $note)
     {
-        $note->delete();
+        Note::where('id', $note->id)->delete();
   
         return redirect()->route('mypatients')
                         ->with('success','Note deleted successfully');
