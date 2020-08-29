@@ -65,7 +65,7 @@
                     <li class="nav-item  ">
                         
                     
-                        <a href="" class="nav-link ">                   
+                        <a href="{{route('incoming')}}" class="nav-link ">                   
                             <span class="title">Incoming Appointments</span>
                         </a>
                     </li>

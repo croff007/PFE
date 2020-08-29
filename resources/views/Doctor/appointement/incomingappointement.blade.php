@@ -6,7 +6,7 @@
     <div class="col-md-8 col-sm-12 ">
         <div class="card card-box">
             <div class="card-head">
-                                    <header>In waiting Appointments List</header>
+                                    <header>Incoming Appointments List</header>
 									
 								</div>
 								<div class="card-body no-padding height-9">
@@ -38,17 +38,18 @@
 											</thead>
 											<tbody>
                                                 @foreach ($appointements as $appointement)
- 												@if($appointement->state=='notconfirmed' && $appointement->doctorid==Auth::user()->id )
-												<tr class="odd gradeX">
-													@foreach ($patients as $patient)
-														@if($patient->id == $appointement->patientid)
-														{{!$phone=$patient->phone}}
-														@endif
-													@endforeach
+                                                 @if($appointement->state=='confirmed' && $appointement->doctorid==Auth::user()->id 
+                                                        && $appointement->date > date('Y-m-d', strtotime('-1 day')) )
 
+                                                            @foreach ($patients as $patient)
+                                                            @if($patient->id == $appointement->patientid)
+                                                            {{!$phone=$patient->phone}}
+                                                            @endif
+                                                            @endforeach
+												<tr class="odd gradeX">
 													
-													<td> {{$appointement->patientname}} </td>
-														
+													<td> {{$appointement->patientname}} {{$appointement->patientlastname}}</td>
+													
 													<td class="center"> {{$appointement->dateofbirth}} </td>
 													
 													<td class="center"> {{$phone}} </td>
@@ -56,6 +57,7 @@
 													<td class="center"> {{$appointement->date}} </td>
 													<td class="center"> {{$appointement->desc}} </td>
 													<td class="center">
+                                                    <a href="{{URL('Doctor/appointement/'.$appointement->id.'/edit')}}">edit</a>
 														<div class="btn-group">
 															<form action="{{ route('appointement.update',$appointement->id) }}" method="POST">
 																@csrf
@@ -68,13 +70,13 @@
 															
 															</button>
 															</form>
-															<form action="{{ route('appointement.destroy',$appointement->id) }}" method="POST">
+															<form action="{{ route('appointement.update',$appointement->id) }}" method="POST">
 																@csrf
-																@method('DELETE')
+																@method('PUT')
 																<button
 																class="btn deepPink-bgcolor  center no-margin"
 																type="submit" > Delete
-															
+                                                                <input type="hidden" name='state' id='state'value="blocked">
 															</button>
 															</form>
 															

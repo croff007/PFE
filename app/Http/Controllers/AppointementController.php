@@ -15,9 +15,10 @@ class AppointementController extends Controller
      */
     public function index()
     {
-         
+        $patients=User::all(); 
+
         $appointements=Appointement::orderby('date','ASC')->paginate(5);
-        return view('Doctor.appointement.appointement',compact('appointements'))->with('i',(request()->input('page',1)-1)*5);
+        return view('Doctor.appointement.appointement',compact('appointements','patients'))->with('i',(request()->input('page',1)-1)*5);
     }
 
 
@@ -27,6 +28,12 @@ class AppointementController extends Controller
          
         $appointements=Appointement::orderby('date','ASC')->paginate(5);
         return view('Doctor.mypatients',compact('appointements'))->with('i',(request()->input('page',1)-1)*5);
+    }
+    public function incoming()
+    {
+        $patients=User::all(); 
+        $appointements=Appointement::orderby('date','ASC')->paginate(5);
+        return view('Doctor.appointement.incomingappointement',compact('appointements','patients'))->with('i',(request()->input('page',1)-1)*5);
     }
 
     /**
@@ -84,7 +91,7 @@ class AppointementController extends Controller
      */
     public function edit(Appointement $appointement)
     {
-        return view('Doctor.editappointement',compact('appointement'));
+        return view('Doctor.appointement.editappointement',compact('appointement'));
     }
 
     /**

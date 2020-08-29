@@ -74,6 +74,7 @@ Route::group(['middleware' => ['auth','Admin']] ,function(){
 
     Route::get('appointementd', 'AppointementController@index')->name('appointementd');
     Route::get('/Doctor/mypatients','AppointementController@mypatients')->name('mypatients');
+    Route::get('/Doctor/incoming','AppointementController@incoming')->name('incoming');
     Route::resource('/Doctor/appointement','AppointementController');
     
     Route::get('/Doctor/index', 'Doctor\DashboardDoctorController@welcome');

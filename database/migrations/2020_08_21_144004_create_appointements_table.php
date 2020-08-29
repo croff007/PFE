@@ -19,7 +19,7 @@ class CreateAppointementsTable extends Migration
             $table->string('patientlastname');
             $table->string('adress');
             $table->string('dateofbirth');
-            $table->date('date');
+            $table->dateTime('date');
             $table->integer('doctorid');
             $table->integer('patientid');
             $table->text('desc');
