@@ -21,7 +21,7 @@
                 </ul>
             </div> 
             <div class="card-body" id="bar-parent">
-                <form class="form-horizontal" method="POST" action="{{ route('appointement.store') }}">
+                <form class="form-horizontal" method="POST" action="{{ route('Patient.appointement.store') }}">
                     @csrf
                     <div class="form-body">
                         <input type="hidden" id="doctorid" name="doctorid" value="{{$id}}">

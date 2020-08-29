@@ -1,18 +1,21 @@
 @extends('layouts/app')
 @section('content')
+{{!$wait=$appointements->where('state','notconfirmed')}}
+{{!$w=$wait->where('doctorid',Auth::user()->id)}}
+      {{!$notif=$w->count()}}
 <div class="page-header navbar navbar-fixed-top">
     <div class="page-header-inner ">
         <!-- logo start -->
         <div class="page-logo">
             <a href="index.html">
                 <span class="logo-icon fa fa-stethoscope fa-rotate-45"></span>
-                <span class="logo-default">REDSTAR</span> </a>
+                <span class="logo-default">cabi'NET</span> </a>
         </div>
         <!-- logo end -->
         
        
       
-       
+        
         
     </ul>
 </div>
@@ -32,7 +35,7 @@
             <li class="sidebar-user-panel">
                 <div class="user-panel">
                     <div class="pull-left image">
-                        <img src="{{asset('img/dp.jpg')}}" class="img-circle user-img-circle" alt="User Image" />
+                        <img src="../img/{{Auth::user()->photo}}" class="img-circle user-img-circle" alt="User Image" />
                     </div>
                     <div class="pull-left info">
                     <p> Dr.{{Auth::user()->name}}</p>
@@ -48,14 +51,29 @@
                 </div>
             </li>
             <li class="nav-item active open">
-            <a href="{{route('appointement.index')}}" class="nav-link ">
-                    <i class="material-icons">assignment</i>
+                <a href="#" class="nav-link nav-toggle"> <i class="material-icons">person</i>
+                    <span class="title">Appointments</span> <span class="selected"></span>
                     
-                    <span class="title">Appointments</span>
-                    <span class="selected"></span>
                 </a>
-               
-            </li>
+                <ul class="sub-menu" style="">
+                    <li class="nav-item  ">
+                        <a href="{{route('appointement.index')}}" class="nav-link ">
+                       <span class="title">New Appointments</span>
+                        <span class="label label-rouded label-menu deepPink-bgcolor">{{$notif}}</span>
+                        </a>
+                    </li>
+                    <li class="nav-item  ">
+                        
+                    
+                        <a href="" class="nav-link ">                   
+                            <span class="title">Incoming Appointments</span>
+                        </a>
+                    </li>
+                    
+                            
+                </ul>
+            </li> 
+            
 
             <li class="nav-item active open">
                 <a href="{{route('mypatients')}}" class="nav-link ">
@@ -66,7 +84,13 @@
                     </a>
                    
                 </li>
-        
+            <a href="{{URL('Doctor/update')}}" class="nav-link ">
+                    <i class="material-icons">edit</i>
+                    
+                    <span class="title">Edit My Profile</span>
+                    <span class="selected"></span>
+                </a>
+                     
         </ul>
     </div>
 </div>

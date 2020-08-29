@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-{{$photo='img/'.Auth::user()->photo}}
+{{!$photo='img/'.Auth::user()->photo}}
 <div class="page-header navbar navbar-fixed-top">
     <div class="page-header-inner ">
         <!-- logo start -->
         <div class="page-logo">
             <a href="index.html">
                 <span class="logo-icon fa fa-stethoscope fa-rotate-45"></span>
-                <span class="logo-default">REDSTAR</span> </a>
+                <span class="logo-default">cabin'NET</span> </a>
         </div>
         <!-- logo end -->
         
@@ -62,6 +62,12 @@
                     <i class="material-icons">assignment</i>
                     
                     <span class="title">Make appointement</span>
+                    <span class="selected"></span>
+                </a> 
+                <a href="" class="nav-link ">
+                    <i class="material-icons">assignment</i>
+                    
+                    <span class="title">Edit My Profile</span>
                     <span class="selected"></span>
                 </a> 
             </li>

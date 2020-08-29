@@ -31,7 +31,7 @@ class NoteController extends Controller
     public function makenote($id)
     {
         $id=$id;
-        return view('Doctor.addnote',compact('id'));
+        return view('Doctor.note.addnote',compact('id'));
     }
 
     /**
@@ -77,7 +77,7 @@ class NoteController extends Controller
     public function edit($id)
     {
         $note = Note::find($id);
-        return view('Doctor.editnote',compact('note'));
+        return view('Doctor.note.editnote',compact('note'));
     }
 
     /**

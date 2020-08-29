@@ -22,22 +22,22 @@
 													<th>Patient Name</th>
 													<th>Birth date</th>
 													<th>Adress</th>
-													<th>Time</th>
+													
 													<th>Description</th>
 													<th>Actions </th>
 												</tr>
 											</thead>
 											<tbody>
-                                                @foreach ($appointements as $appointement)
+                                                @foreach ($appointements->unique('patientid') as $appointement)
  												@if($appointement->state=='confirmed' && $appointement->doctorid==Auth::user()->id )
 												<tr class="odd gradeX">
 													
-													<td> {{$appointement->patientname}} </td>
+													<td> {{$appointement->patientname}} {{$appointement->patientlastname}} </td>
 													
 													<td class="center"> {{$appointement->dateofbirth}} </td>
 													
 													<td class="center"> {{$appointement->adress}} </td>
-													<td class="center"> {{$appointement->date}} </td>
+													
 													<td class="center"> {{$appointement->desc}} </td>
 													<td class="center">
 														<div class="btn-group">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Appointement;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,7 @@ class AppointementController extends Controller
     {
          
         $appointements=Appointement::orderby('date','ASC')->paginate(5);
-        return view('Doctor.appointement',compact('appointements'))->with('i',(request()->input('page',1)-1)*5);
+        return view('Doctor.appointement.appointement',compact('appointements'))->with('i',(request()->input('page',1)-1)*5);
     }
 
 

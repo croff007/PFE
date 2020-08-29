@@ -69,20 +69,27 @@ Route::group(['middleware' => ['auth','Admin']] ,function(){
  Route::group(['middleware' => ['auth','Doctor']] ,function(){
     
     Route::get('/Doctor/showpatient/{id}','NoteController@show')->name('showpatient');
+    Route::resource('/Doctor/Note','NoteController');
+    Route::get('/Doctor/makenote/{id}', 'NoteController@makenote')->name('makenote');
 
     Route::get('appointementd', 'AppointementController@index')->name('appointementd');
     Route::get('/Doctor/mypatients','AppointementController@mypatients')->name('mypatients');
     Route::resource('/Doctor/appointement','AppointementController');
-    Route::resource('/Doctor/Note','NoteController');
+    
     Route::get('/Doctor/index', 'Doctor\DashboardDoctorController@welcome');
-    Route::get('/Doctor/makenote/{id}', 'NoteController@makenote')->name('makenote');
+
+    Route::GET('/Doctor/update', 'Doctor\DashboardDoctorController@showupdate');
+    Route::PUT('/Doctor/update', 'Doctor\DashboardDoctorController@update')->name('update');
+    
     
 });
 Route::group(['middleware' => ['auth','Patient']] ,function(){
 
     
     Route::get('/Patient/index', 'Patient\PatientController@welcome');
-    
+    Route::resource('/Patient/appointement','AppointementController', [
+        'as' => 'Patient'
+    ]);
     Route::get('/Patient/appontement/{id}', 'AppointementController@makeappointement')->name('makeappointement');
     Route::get('/Patient/doctorlist', 'Patient\PatientController@doctorlist')->name('doctorlist');
 
