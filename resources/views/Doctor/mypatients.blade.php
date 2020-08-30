@@ -5,7 +5,7 @@
     <div class="col-md-8 col-sm-12 ">
         <div class="card card-box">
             <div class="card-head">
-                                    <header>Booked Appointment List</header>
+                                    <header>my patients List</header>
 									
 								</div>
 								<div class="card-body no-padding height-9">

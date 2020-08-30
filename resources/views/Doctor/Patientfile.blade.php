@@ -81,7 +81,7 @@
 
             <div class="card card-topline-purple">
                 <div class="card-head">
-                    <header>Past Visit History</header>
+                    <header>Patient History</header>
                 </div>
                 <div class="card-body ">
                     <div class="table-responsive">
@@ -92,7 +92,7 @@
                                     <th>Date</th>
                                     <th>Doctor</th>
                                     <th>Note</th>
-                                    <th>Action</th>
+                                 
                                 </tr>
                             </thead>
                             <tbody>
@@ -108,18 +108,7 @@
                                     <td>{{$note->created_at}}</td>
                                     <td>{{$doctor->name}} {{$doctor->lastname}}</td>
                                     <td>{{$note->desc}}</td>
-                                    @if(Auth::user()->id==$note->doctorid)
-                                <td><a href="{{route('Note.edit', $note->id)}}" class=""
-                                            data-toggle="tooltip" title="Edit">
-                                            <i class="fa fa-edit"></i></a>
-                                 <form action="{{ route('Note.destroy',$note) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                   
-                                        <button type="submit">    <i class="fa fa-trash"></i></button>
-                                 </form>
-                                    </td>
-                                    @endif
+                                    
                                 </tr>
                                @endforeach 
                             </tbody>

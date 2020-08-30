@@ -58,13 +58,19 @@
                     <span class="title">Doctor List</span>
                     <span class="selected"></span>
                 </a>
-                <a href="" class="nav-link ">
+                <a href="{{ route('incomingapp') }}" class="nav-link ">
                     <i class="material-icons">assignment</i>
                     
-                    <span class="title">Make appointement</span>
+                    <span class="title">Incoming Appointements</span>
+                    <span class="selected"></span>
+                </a>
+            <a href="{{route('patienthistory')}}" class="nav-link ">
+                    <i class="material-icons">assignment</i>
+                    
+                    <span class="title">My History</span>
                     <span class="selected"></span>
                 </a> 
-                <a href="" class="nav-link ">
+            <a href="{{route('patientprofile')}}" class="nav-link ">
                     <i class="material-icons">assignment</i>
                     
                     <span class="title">Edit My Profile</span>

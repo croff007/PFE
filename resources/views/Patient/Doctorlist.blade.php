@@ -3,7 +3,22 @@
 
 
 
-
+<style>
+    .holder {
+      display: inline;
+    }
+    .gg{
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .holder img {
+      max-height: 200px;
+      max-width: 200px;
+      object-fit: cover;
+      text-align: center;
+     
+    }
+  </style>
 
 <div class="d-flex justify-content-center">
 <div class="col-md-8 col-sm-12 ">
@@ -13,7 +28,7 @@
         @foreach ($users as $doctor)
  		 @if ($doctor->role == 'Doctor')
         <div class="col-md-4">
-            <div class="card card-topline-aqua">
+            <div class="card card-topline-aqua" style="overflow-y: auto; height:400px;">
                 <div class="card-body no-padding ">
                     <div class="doctor-profile">
                         
@@ -28,12 +43,16 @@
                                     href="tel:{{$doctor->name}}"> {{$doctor->phone}}</a></p>
                         </div>
 
-                        <div class="profile-userbuttons">
-                            <a href="{{ URL('/Patient/appontement/'.$doctor->id )}}"
-                                class="btn btn-circle deepPink-bgcolor btn-sm">Make appointement</a>
-                        </div>
+                        
+                            
+                        
                     </div>
+                    
                 </div>
+                <a style="margin-bottom: 5px" href="{{ URL('/Patient/appontement/'.$doctor->id )}}"
+                    class="btn btn-circle deepPink-bgcolor btn-sm">Make appointement</a>
+                    <a style="margin-bottom: 5px" href="{{ URL('/Patient/appontement/'.$doctor->id )}}"
+                        class="btn btn-circle blue-bgcolor btn-sm">See profile</a>    
             </div>
         </div>
         @endif

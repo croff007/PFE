@@ -19,22 +19,21 @@
   </style>
 
 
-<form method="POST" action="{{route('update')}}">
-    @csrf
-    @method('PUT')
+
+
     <div class="white-box">
-        <div class=" cardbox patient-profile">
+        <div class=" cardbox">
             <div class="gg">
                 <div class="holder">
-                   <input type="hidden" name="id" value="{{Auth::user()->id}}">
+                    
                    <img src="../img/{{Auth::user()->photo}}" class="img-circle user-img-circle" alt="User Image" />
-                   <input class="custom-file-input" type="file" name="photo" placeholder="Last Name" id="photo" value="{{Auth::user()->photo}}">
+           
                    </div>
                    </div>
         </div>
         <div class="cardbox">
             <div class="header">
-                <h4 class="font-bold">ABOUT PATIENT</h4>
+                <h4 class="font-bold">My Profile</h4>
             </div>
             <div class="body">
                 <div class="user-btm-box">
@@ -46,11 +45,11 @@
                     <div class="row text-center m-t-10">
                         <div class="col-lg-6 col-md-12 col-sm-6 col-xs-12 b-r">
                             <strong>Name</strong>
-                            <input type="text" name='name' value="{{Auth::user()->name}}">
+                            {{Auth::user()->name}}
                         </div>
                         <div class="col-lg-6 col-md-12 col-sm-6 col-xs-12 b-r">
                             <strong>Last Name</strong>
-                            <input type="text" name='lastname' value="{{Auth::user()->lastname}}">
+                            {{Auth::user()->lastname}}
                         </div>
                         
                     </div>
@@ -61,12 +60,12 @@
                         <div class="col-lg-6 col-md-12 col-sm-6 col-xs-12 b-r"><strong>Email
                                 ID</strong>
                        
-                            <input type="text" name='email' value="{{Auth::user()->email}}">
+                            {{Auth::user()->email}}
                         </div>
                         <div class="col-lg-6 col-md-12 col-sm-6 col-xs-12">
                             <strong>Phone</strong>
                           
-                            <input type="text" name='phone' value="{{Auth::user()->phone}}">
+                            {{Auth::user()->phone}}
                         </div>
                     </div>
                     <!-- /.row -->
@@ -75,10 +74,12 @@
                     <div class="row text-center m-t-10">
                         <div class="col-lg-6 col-md-12 col-sm-6 col-xs-12 b-r"><strong>Departement</strong>
                        
-                            <input type="text" name='departement' value="{{Auth::user()->departement}}">
+                            {{Auth::user()->departement}}
                         </div>
 
                     </div>
+
+                  
                     <!-- /.row -->
                     <hr>
                     <!-- .row -->
@@ -86,21 +87,15 @@
                         <div class="col-lg-6 col-md-12 col-sm-6 col-xs-12">
                             <strong>Description</strong>
                         
-                            <textarea name="desc"rows="5" cols="23">{{Auth::user()->desc}}"</textarea>
+                            {{Auth::user()->desc}}
                             </div>
                         
                             <div class="col-lg-6 col-md-12 col-sm-6 col-xs-12"><strong>Address</strong>
-                            <textarea name="adress" rows="5" cols="23" >{{Auth::user()->adress}}"</textarea>
+                            {{Auth::user()->adress}}
                             </div>
                         </div>
                 </div>
-                <div class="row text-center m-t-10">
-                    <div class="container-login100-form-btn">
-                        <button type="submit" class="login100-form-btn">
-                            Save
-                        </button>
-                    </div>
-                    </div>
+                
             </div>
             </div>
 

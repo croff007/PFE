@@ -1,12 +1,13 @@
-@extends('Doctor/DashboardDoctor')
-@section('dashcontent')
+@extends('Patient/DashboardPatient')
+@section('patientcontent')
+
 
 <div class="d-flex justify-content-center">
 
     <div class="col-md-8 col-sm-12 ">
         <div class="card card-box">
             <div class="card-head">
-                                    <header>In waiting Appointments List</header>
+                                    <header>Incoming Appointments List</header>
 									
 								</div>
 								<div class="card-body no-padding height-9">
@@ -33,51 +34,33 @@
 													<th>Adress</th>
 													<th>Time</th>
 													<th>Description</th>
-													<th>Actions </th>
+													
 												</tr>
 											</thead>
 											<tbody>
                                                 @foreach ($appointements as $appointement)
- 												@if($appointement->state=='notconfirmed' && $appointement->doctorid==Auth::user()->id )
+                                                 @if( $appointement->patientid==Auth::user()->id &&
+                                                       $appointement->state =='confirmed' && $appointement->date > date('Y-m-d', strtotime('-1 day')) )
+                                                            
+                                                            @foreach ($doctors as $doctor)
+                                                            @if($doctor->id == $appointement->doctorid)
+                                                            {{!$phone=$doctor->phone}}
+                                                            
+                                                            @endif
+                                                            @endforeach
 												<tr class="odd gradeX">
-													@foreach ($patients as $patient)
-														@if($patient->id == $appointement->patientid)
-														{{!$phone=$patient->phone}}
-														@endif
-													@endforeach
-
 													
-													<td> {{$appointement->patientname}} </td>
-														
+													<td> {{$appointement->patientname}} {{$appointement->patientlastname}}</td>
+													
 													<td class="center"> {{$appointement->dateofbirth}} </td>
 													
 													<td class="center"> {{$phone}} </td>
 													<td class="center"> {{$appointement->adress}} </td>
 													<td class="center"> {{$appointement->date}} </td>
 													<td class="center"> {{$appointement->desc}} </td>
-													<td class="center">
-														<div class="btn-group">
-															<form action="{{ route('appointement.update',$appointement->id) }}" method="POST">
-																@csrf
-																@method('PUT')
-																
-																<input type="hidden" name='state' id='state'value="confirmed">
-															<button
-																class="btn blue-bgcolor  center no-margin"
-																type="submit" > Confirm
+													
+                                                    
 															
-															</button>
-															</form>
-															<form action="{{ route('appointement.destroy',$appointement->id) }}" method="POST">
-																@csrf
-																@method('DELETE')
-																<button
-																class="btn deepPink-bgcolor  center no-margin"
-																type="submit" > Delete
-															
-															</button>
-															</form>
-															<a href="{{URL('Doctor/appointement/'.$appointement->id.'/edit')}}">edit</a>
 															
 														</div>
 													</td>

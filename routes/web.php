@@ -72,7 +72,7 @@ Route::group(['middleware' => ['auth','Admin']] ,function(){
     Route::resource('/Doctor/Note','NoteController');
     Route::get('/Doctor/makenote/{id}', 'NoteController@makenote')->name('makenote');
 
-    Route::get('appointementd', 'AppointementController@index')->name('appointementd');
+    Route::get('Doctor/appointement', 'AppointementController@index')->name('appointementd');
     Route::get('/Doctor/mypatients','AppointementController@mypatients')->name('mypatients');
     Route::get('/Doctor/incoming','AppointementController@incoming')->name('incoming');
     Route::resource('/Doctor/appointement','AppointementController');
@@ -88,11 +88,17 @@ Route::group(['middleware' => ['auth','Patient']] ,function(){
 
     
     Route::get('/Patient/index', 'Patient\PatientController@welcome');
-    Route::resource('/Patient/appointement','AppointementController', [
+    Route::resource('appointement','AppointementController', [
         'as' => 'Patient'
     ]);
     Route::get('/Patient/appontement/{id}', 'AppointementController@makeappointement')->name('makeappointement');
+    Route::get('/Patient/incoming','Patient\PatientController@incoming')->name('incomingapp');
+
     Route::get('/Patient/doctorlist', 'Patient\PatientController@doctorlist')->name('doctorlist');
+    Route::PUT('/Patient/update', 'Doctor\DashboardDoctorController@update')->name('updatep');
+    Route::get('/Patient/patienthistory', 'Patient\PatientController@patienthistory')->name('patienthistory');
+    Route::get('/Patient/patientprofile', 'Patient\PatientController@patientprofile')->name('patientprofile');
+
 
 
 

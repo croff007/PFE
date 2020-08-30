@@ -1,5 +1,10 @@
 @extends('layouts/app')
 @section('content')
+
+@if(Auth::user()->state=='notconfirmed')
+    @extends('Doctor.enattente')
+@else
+
 {{!$wait=$appointements->where('state','notconfirmed')}}
 {{!$w=$wait->where('doctorid',Auth::user()->id)}}
       {{!$notif=$w->count()}}
@@ -35,7 +40,7 @@
             <li class="sidebar-user-panel">
                 <div class="user-panel">
                     <div class="pull-left image">
-                        <img src="../img/{{Auth::user()->photo}}" class="img-circle user-img-circle" alt="User Image" />
+                        <img src="http://localhost:8000/img/{{Auth::user()->photo}}" class="img-circle user-img-circle" alt="User Image" />
                     </div>
                     <div class="pull-left info">
                     <p> Dr.{{Auth::user()->name}}</p>
@@ -102,5 +107,5 @@
 @yield('dashcontent')
 </div>
 </div>
-    
+@endif
 @endsection

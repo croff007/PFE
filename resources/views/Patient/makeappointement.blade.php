@@ -10,15 +10,7 @@
                     data-upgraded=",MaterialButton">
                     <i class="material-icons">more_vert</i>
                 </button>
-                <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
-                    data-mdl-for="panel-button">
-                    <li class="mdl-menu__item"><i class="material-icons">assistant_photo</i>Action
-                    </li>
-                    <li class="mdl-menu__item"><i class="material-icons">print</i>Another action
-                    </li>
-                    <li class="mdl-menu__item"><i class="material-icons">favorite</i>Something else
-                        here</li>
-                </ul>
+                
             </div> 
             <div class="card-body" id="bar-parent">
                 <form class="form-horizontal" method="POST" action="{{ route('Patient.appointement.store') }}">
@@ -33,7 +25,7 @@
                         <input type="hidden" id="state" name="state" value="notconfirmed">
 
                         
-           ;
+           
          
                         
                       

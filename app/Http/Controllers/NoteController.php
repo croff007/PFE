@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Note;
 use Illuminate\Http\Request;
 use App\User;
+use App\Appointement;
+
 
 class NoteController extends Controller
 {
@@ -31,7 +33,8 @@ class NoteController extends Controller
     public function makenote($id)
     {
         $id=$id;
-        return view('Doctor.note.addnote',compact('id'));
+        $appointements = Appointement::all();
+        return view('Doctor.note.addnote',compact('id','appointements'));
     }
 
     /**
@@ -63,9 +66,10 @@ class NoteController extends Controller
     {
         $User= User::All();
         $Notes= Note::All();
+        $appointements = Appointement::all();
         $id=$id;
         
-        return view('Doctor.Patientfile',compact('User','id','Notes'));
+        return view('Doctor.Patientfile',compact('User','id','Notes','appointements'));
     }
 
     /**
@@ -77,7 +81,8 @@ class NoteController extends Controller
     public function edit($id)
     {
         $note = Note::find($id);
-        return view('Doctor.note.editnote',compact('note'));
+        $appointements = Appointement::all();
+        return view('Doctor.note.editnote',compact('note','appointements'));
     }
 
     /**
