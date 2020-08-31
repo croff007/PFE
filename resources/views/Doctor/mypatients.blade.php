@@ -21,7 +21,7 @@
 													
 													<th>Patient Name</th>
 													<th>Birth date</th>
-													<th>Adress</th>
+													<th>Phone</th>
 													
 													<th>Description</th>
 													<th>Actions </th>
@@ -36,7 +36,7 @@
 													
 													<td class="center"> {{$appointement->dateofbirth}} </td>
 													
-													<td class="center"> {{$appointement->adress}} </td>
+													<td class="center"> {{$appointement->Phone}} </td>
 													
 													<td class="center"> {{$appointement->desc}} </td>
 													<td class="center">

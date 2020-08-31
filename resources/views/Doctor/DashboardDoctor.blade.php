@@ -2,7 +2,7 @@
 @section('content')
 
 @if(Auth::user()->state=='notconfirmed')
-    @extends('Doctor.enattente')
+  {{ Redirect::to('/enattente') }}
 @else
 
 {{!$wait=$appointements->where('state','notconfirmed')}}

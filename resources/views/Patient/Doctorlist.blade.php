@@ -24,7 +24,7 @@
 <div class="col-md-8 col-sm-12 ">
     <div class="card card-box" style="margin-top: 50px">
 <div class="tab-pane" id="tab2">
-    <div class="row">
+    <div class="row" style="padding: 20px">
         @foreach ($users as $doctor)
  		 @if ($doctor->role == 'Doctor')
         <div class="col-md-4">
@@ -49,9 +49,9 @@
                     </div>
                     
                 </div>
-                <a style="margin-bottom: 5px" href="{{ URL('/Patient/appontement/'.$doctor->id )}}"
+                <a style="margin-bottom: 5px;margin-left: 20px;margin-right: 20px;" href="{{ URL('/Patient/appontement/'.$doctor->id )}}"
                     class="btn btn-circle deepPink-bgcolor btn-sm">Make appointement</a>
-                    <a style="margin-bottom: 5px" href="{{ URL('/Patient/appontement/'.$doctor->id )}}"
+                    <a style="margin-bottom: 5px;margin-left: 20px;margin-right: 20px;" href="{{ URL('/Patient/appontement/'.$doctor->id )}}"
                         class="btn btn-circle blue-bgcolor btn-sm">See profile</a>    
             </div>
         </div>

@@ -22,9 +22,7 @@
         {{!$patient=$patients}}
         {{!$photo='../../img/'.$patient->photo}}
 
-
-    <div class="white-box">
-        <div class=" cardbox patient-profile">
+        <div class=" cardbox ">
             <div class="gg">
                 <div class="holder">
                    
@@ -33,6 +31,8 @@
                    </div>
                    </div>
         </div>
+    <div class="white-box">
+        
         <div class="cardbox">
             <div class="header">
                 <h4 class="font-bold">ABOUT PATIENT</h4>
@@ -92,6 +92,7 @@
                                     <th>Date</th>
                                     <th>Doctor</th>
                                     <th>Note</th>
+                                    <th>Actions</th>
                                  
                                 </tr>
                             </thead>
@@ -108,7 +109,17 @@
                                     <td>{{$note->created_at}}</td>
                                     <td>{{$doctor->name}} {{$doctor->lastname}}</td>
                                     <td>{{$note->desc}}</td>
-                                    
+                                    @if($note->doctorid==Auth::user()->id)
+                                    <td> 
+                                       <a href="{{route('Note.edit',$note)}}"> <i class="fa fa-edit"></i></a>
+                                        <form action="{{route('Note.destroy',$note)}}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+
+                                      <button type="submit">      <i class="fa fa-trash"></i></button>
+                                        
+                                    </td>
+                                    @endif
                                 </tr>
                                @endforeach 
                             </tbody>

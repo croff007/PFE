@@ -60,11 +60,34 @@
 
             .m-b-md {
                 margin-bottom: 30px;
+                
+            }
+            .grad{
+                    background-image: linear-gradient(to right top, #1a73e8, #895fd8, #be46b9, #dd2990, #e91e63);
+                }
+            .nav
+            {
+                background-color: rgb(235, 235, 235);
+                max-height: 60px;
+                box-shadow:3px 3px 5px 5px rgba(5, 0, 0, 0.205);
+            }
+            .about{
+                margin-top: 10%;
+                margin-right:40%;
+                background-color: rgb(235, 235, 235);
+                border-radius: 25px;
+                padding: 10px;
+                padding-left:20px; 
+                max-width: 50%;
+                color: black;
+                font-weight: 400;
             }
         </style>
     </head>
-    <body>
+    <body class="grad">
+     <div class="nav">
         <div class="flex-center position-ref full-height">
+            
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
@@ -79,24 +102,28 @@
                        
                     @endauth
                 </div>
+     
             @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+            <div class="about">
+                <b>ABOUT US</b>
+        
+                <p>"Cabi'NET" is an online platform for connecting physicians and patients.
+                    As a patient<br> With Cabi'NET you can manage appointments remotely,
+                     consult your doctor in the form of a message in a Chat-Room and see notes assigned
+                     by your doctors about your health.<br>
+                    And as a doctor, you can communicate with other doctors
+                    in a Chat-Room to ensure the speed and ease of sharing
+                     information, manage your appointments and add notes in the
+                     profiles of your patients.
+                </p>
+        
             </div>
         </div>
+
+    
+
+    </div>
+
+            
     </body>
 </html>

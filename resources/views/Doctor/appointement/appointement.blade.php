@@ -56,12 +56,15 @@
 													<td class="center"> {{$appointement->date}} </td>
 													<td class="center"> {{$appointement->desc}} </td>
 													<td class="center">
+														<a href="{{URL('Doctor/appointement/'.$appointement->id.'/edit')}}">edit</a>
 														<div class="btn-group">
+															
 															<form action="{{ route('appointement.update',$appointement->id) }}" method="POST">
 																@csrf
 																@method('PUT')
 																
 																<input type="hidden" name='state' id='state'value="confirmed">
+																
 															<button
 																class="btn blue-bgcolor  center no-margin"
 																type="submit" > Confirm
@@ -77,7 +80,8 @@
 															
 															</button>
 															</form>
-															<a href="{{URL('Doctor/appointement/'.$appointement->id.'/edit')}}">edit</a>
+															
+															
 															
 														</div>
 													</td>

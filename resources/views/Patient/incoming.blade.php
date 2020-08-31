@@ -45,19 +45,20 @@
                                                             @foreach ($doctors as $doctor)
                                                             @if($doctor->id == $appointement->doctorid)
                                                             {{!$phone=$doctor->phone}}
-                                                            
+                                                            {{!$name=$doctor->name}}
+                                                            {{!$lastname=$doctor->lastname}}
                                                             @endif
                                                             @endforeach
 												<tr class="odd gradeX">
 													
-													<td> {{$appointement->patientname}} {{$appointement->patientlastname}}</td>
+													<td class="center"style="min-width:150px"> {{$name}} {{$lastname}}</td>
 													
 													<td class="center"> {{$appointement->dateofbirth}} </td>
 													
 													<td class="center"> {{$phone}} </td>
 													<td class="center"> {{$appointement->adress}} </td>
 													<td class="center"> {{$appointement->date}} </td>
-													<td class="center"> {{$appointement->desc}} </td>
+													<td class="center" style="max-width:200px"> {{$appointement->desc}} </td>
 													
                                                     
 															
