@@ -51,7 +51,7 @@
                 </div>
                 <a style="margin-bottom: 5px;margin-left: 20px;margin-right: 20px;" href="{{ URL('/Patient/appontement/'.$doctor->id )}}"
                     class="btn btn-circle deepPink-bgcolor btn-sm">Make appointement</a>
-                    <a style="margin-bottom: 5px;margin-left: 20px;margin-right: 20px;" href="{{ URL('/Patient/appontement/'.$doctor->id )}}"
+                    <a style="margin-bottom: 5px;margin-left: 20px;margin-right: 20px;" href="{{ URL('/Patient/showdoctor/'.$doctor->id )}}"
                         class="btn btn-circle blue-bgcolor btn-sm">See profile</a>    
             </div>
         </div>

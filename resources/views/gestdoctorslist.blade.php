@@ -48,15 +48,21 @@
         <link href="{{asset('css/responsive.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{asset('css/theme-color.css')}}" rel="stylesheet" type="text/css" />
 
+
         <!-- Styles -->
         <style>
             html, body {
-               
+                background-color: #fff;
                 color: #636b6f;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
                 height: 100vh;
                 margin: 0;
+                background-image: linear-gradient(to bottom, #786ee9, #7e5fe0, #854ed5, #8c39c9, #921cbb);
+                
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                 background-size: 100% 100%;
             }
 
             .full-height {
@@ -102,8 +108,8 @@
                 
             }
             .grad{
-                     background-image: linear-gradient(to bottom, #786ee9, #7e5fe0, #854ed5, #8c39c9, #921cbb);
-                    opacity: 80%;
+                background-image: linear-gradient(to bottom, #786ee9, #7e5fe0, #854ed5, #8c39c9, #921cbb);
+                opacity: 80%;
                 }
             .nav
             {
@@ -125,9 +131,23 @@
                 max-width: 50%;
                 color: black;
                 font-weight: 400;
-                box-shadow:3px 3px 5px 5px rgba(5, 0, 0, 0.205);
             }
-            .logo{
+           
+                .holder {
+                  display: inline;
+                }
+                .gg{
+                    text-align: center;
+                    margin-bottom: 20px;
+                }
+                .holder img {
+                  max-height: 200px;
+                  max-width: 200px;
+                  object-fit: cover;
+                  text-align: center;
+                 
+                }
+                .logo{
                     position: fixed;
                     top: 0;
                     float: left;
@@ -144,10 +164,12 @@
                     height: 34px;
                     font-size: 25px;
                 }
+              
         </style>
     </head>
-    <body class="grad">
-     <div class="nav">
+    <body >
+        
+     <div class="nav" >
         <div class="logo" style="position: fixed;">
             <a href="{{URL('/')}}">
                 <span class="logo-icon fa fa-stethoscope fa-rotate-45" style="color: #fff"></span>
@@ -156,7 +178,7 @@
         <div class="flex-center position-ref full-height">
             
             @if (Route::has('login'))
-                <div class="top-right links">
+                <div class="top-right links" style="position: fixed;">
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
                     @else
@@ -164,27 +186,78 @@
 
                         
                             <a href="{{ route('registerdoctor') }}">Register as doctor </a>
-                            <a href="{{ route('registerpatient') }}">Register as patient</a>
-                            <a href="{{ route('doctorslistg') }}">Check Our Doctors</a>
+                            <a href="{{ route('registerpatient') }}">Register as patient
+                            </a>
                        
                     @endauth
                 </div>
      
             @endif
-            <div class="about">
-                <b>ABOUT US</b>
-        
-                <p>"Cabi'NET" is an online platform for connecting physicians and patients.
-                    As a patient<br> With Cabi'NET you can manage appointments remotely,
-                     consult your doctor in the form of a message in a Chat-Room and see notes assigned
-                     by your doctors about your health.<br>
-                    And as a doctor, you can communicate with other doctors
-                    in a Chat-Room to ensure the speed and ease of sharing
-                     information, manage your appointments and add notes in the
-                     profiles of your patients.
-                </p>
-        
+            
             </div>
+            </div>
+        
+
+
+
+
+        
+            
+            <div class="d-flex justify-content-center">
+                
+            <div class="col-md-8 col-sm-12 ">
+                <div class="card card-box" style="margin-top: 100px;border-radius: 25px;box-shadow:3px 3px 5px 5px rgba(5, 0, 0, 0.205);">
+            <div class="tab-pane" id="tab2">
+                <div class="row" style="padding: 20px ">
+                    @foreach ($users as $doctor)
+                
+                      @if ($doctor->role == 'Doctor')
+                    <div class="col-md-4">
+                        <div class="card card-topline-aqua" style="overflow-y: auto; height:400px;">
+                            <div class="card-body no-padding ">
+                                <div class="doctor-profile">
+                                    
+                                    <img src="{{asset('img/'.$doctor->photo)}}" class="doctor-pic" alt="">
+                                    <div class="profile-usertitle">
+                                        <div class="doctor-name">Dr.{{$doctor->name}} {{$doctor->lastname}} </div>
+                                        <div class="name-center"> {{$doctor->departement}} </div>
+                                    </div>
+                                    <p>{{$doctor->adress}} </p> 
+                                    <div>
+                                        <p><i class="fa fa-phone"></i><a
+                                                href="tel:{{$doctor->name}}"> {{$doctor->phone}}</a></p>
+                                    </div>
+            
+                                    
+                                        
+                                    
+                                </div>
+                                
+                            </div>
+                              
+                        </div>
+                    </div>
+                    @endif
+                    @endforeach
+                </div>
+            </div>
+            </div>
+            </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         </div>
 
     

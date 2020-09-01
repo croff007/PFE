@@ -38,7 +38,8 @@
 											</thead>
 											<tbody>
                                                 @foreach ($appointements as $appointement)
- 												@if($appointement->state=='notconfirmed' && $appointement->doctorid==Auth::user()->id )
+												 @if($appointement->state=='notconfirmed' && $appointement->doctorid==Auth::user()->id )
+												 
 												<tr class="odd gradeX">
 													@foreach ($patients as $patient)
 														@if($patient->id == $appointement->patientid)

@@ -19,7 +19,7 @@ Route::get('/', function () {
 });
 Auth::routes();
 
-
+Route::get('doctorlist', 'guestController@doctorlist')->name('doctorslistg');
 
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
@@ -83,6 +83,7 @@ Route::group(['middleware' => ['auth','Admin']] ,function(){
     Route::PUT('/Doctor/update', 'Doctor\DashboardDoctorController@update')->name('update');
     
     
+    
 });
 Route::group(['middleware' => ['auth','Patient']] ,function(){
 
@@ -98,6 +99,7 @@ Route::group(['middleware' => ['auth','Patient']] ,function(){
     Route::PUT('/Patient/update', 'Doctor\DashboardDoctorController@update')->name('updatep');
     Route::get('/Patient/patienthistory', 'Patient\PatientController@patienthistory')->name('patienthistory');
     Route::get('/Patient/patientprofile', 'Patient\PatientController@patientprofile')->name('patientprofile');
+    Route::GET('/Patient/showdoctor/{id}','Patient\PatientController@showdoctor')->name('showdoctor');
 
 
 

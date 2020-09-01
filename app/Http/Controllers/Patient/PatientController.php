@@ -54,4 +54,10 @@ class PatientController extends Controller
         
         return view('Patient.incoming',compact('appointements','doctors'));
     }
+    public function showdoctor($id)
+    {
+               
+        $User=User::all();
+        return view('Patient.pdoctorprofile',compact('id','User'));
+    }
 }

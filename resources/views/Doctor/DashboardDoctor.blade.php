@@ -14,7 +14,7 @@
         <div class="page-logo">
             <a href="index.html">
                 <span class="logo-icon fa fa-stethoscope fa-rotate-45"></span>
-                <span class="logo-default">cabi'NET</span> </a>
+                <span class="logo-default">Cabi'NET</span> </a>
         </div>
         <!-- logo end -->
         
